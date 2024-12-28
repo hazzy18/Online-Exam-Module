@@ -33,6 +33,7 @@ public class ExamService {
         exam.setExamName((examDto.getExamName()));
         exam.setPassingCriteria(examDto.getPassingCriteria());
         exam.setTotalQuestions(examDto.getTotalQuestions());
+        exam.setDuration(examDto.getDuration());
         Exam savedExam=examRepository.save(exam);
         for(Long questionId : examDto.getQuestionIds()){
             Question question=questionRepository.findById(questionId)

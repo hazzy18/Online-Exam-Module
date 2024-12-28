@@ -20,6 +20,9 @@ public class Exam {
     @Column(name="passing_criteria",nullable = false)
     private int passingCriteria;
 
+    @Column(name="duration",nullable=false)
+    private int duration;//duration in mins
+
     @Column(name="created_at",nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt=new Date();
@@ -55,5 +58,10 @@ public class Exam {
     public void setCreatedAt(Date createdAt){
         this.createdAt=createdAt;
     }
-
+    public int getDuration(){
+        return duration;
+    }
+    public void setDuration(int duration){
+        this.duration=duration;
+    }
 }

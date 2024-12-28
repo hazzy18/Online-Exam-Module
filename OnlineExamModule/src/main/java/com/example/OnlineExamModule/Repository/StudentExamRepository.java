@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface StudentExamRepository extends JpaRepository<StudentExamEntity,Long> {
     List<StudentExamEntity> findByExam(Exam exam);
+
+    List<StudentExamEntity> findByStatus(String inProgress);
 }

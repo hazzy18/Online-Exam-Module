@@ -7,6 +7,7 @@ public class ExamDto {
     private String examName;
     private int totalQuestions;
     private int passingCriteria;
+    private int duration;//duration in mins
     private List<Long> questionIds;
 
     //getters and setters
@@ -32,6 +33,13 @@ public class ExamDto {
 
     public void setPassingCriteria(int passingCriteria) {
         this.passingCriteria = passingCriteria;
+    }
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public List<Long> getQuestionIds(){
