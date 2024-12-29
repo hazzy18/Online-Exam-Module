@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Component
 //enable it to run scheduled tasks when application starts
@@ -29,8 +30,9 @@ public class ExamScheduler {
             Date endTime=new Date(startTime.getTime()+examDuration*60000);
             if(currentTime.after(endTime)){
                 //autosubmit the exam with saved answers
-                questionNavigationService.submitExam(studentExam.getStudentExamId(),studentExam.getAnswers());
-
+                Map<Long, String> mcqAnswers = studentExam.getMcqAnswers();
+                Map<Long, String> programmingAnswers = studentExam.getProgrammingAnswers();
+                questionNavigationService.submitExam(studentExam.getStudentExamId(), mcqAnswers, programmingAnswers);
             }
         }
     }

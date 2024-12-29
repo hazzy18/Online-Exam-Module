@@ -7,6 +7,9 @@ public class QuestionDto {
     private String categoryName;
     private String correctOption;
     private List<String> options;
+    private String referenceAnswer;
+    private String difficultyLevel;
+    private String questionType; // "MCQ" or "PROGRAMMING"
 
     // Getters and Setters
 
@@ -40,5 +43,29 @@ public class QuestionDto {
 
     public void setOptions(List<String> options) {
         this.options = options;
+    }
+
+    public String getReferenceAnswer() {
+        return referenceAnswer;
+    }
+
+    public void setReferenceAnswer(String referenceAnswer) {
+        this.referenceAnswer = referenceAnswer;
+    }
+
+    public String getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    public void setDifficultyLevel(String difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
+    }
+
+    public String getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(String questionType) {
+        this.questionType = questionType;
     }
 }

@@ -21,6 +21,15 @@ public class Question {
     @Column(name = "correct_option", nullable = false)
     private String correctOption;
 
+    @Column(name = "reference_answer")
+    private String referenceAnswer;
+
+    @Column(name = "difficulty_level")
+    private String difficultyLevel;
+
+    @Column(name = "question_type", nullable = false)
+    private String questionType; // "MCQ" or "PROGRAMMING"
+
     @Column(name = "created_at", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt = new Date();
@@ -65,4 +74,29 @@ public class Question {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
+
+    public String getReferenceAnswer() {
+        return referenceAnswer;
+    }
+
+    public void setReferenceAnswer(String referenceAnswer) {
+        this.referenceAnswer = referenceAnswer;
+    }
+
+    public String getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    public void setDifficultyLevel(String difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
+    }
+
+    public String getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(String questionType) {
+        this.questionType = questionType;
+    }
+
 }

@@ -36,9 +36,11 @@ public class QuestionNavigationController {
     }
 
     @PostMapping("/submit/{studentExamId}")
-    public ResponseEntity<StudentExamEntity> submitExam(@PathVariable Long studentExamId, @RequestBody Map<Long,String> answers){
-        questionNavigationService.submitExam(studentExamId,answers);
-        StudentExamEntity studentExam=questionNavigationService.getStudentExam(studentExamId);
+    public ResponseEntity<StudentExamEntity> submitExam(@PathVariable Long studentExamId, @RequestBody Map<String, Map<Long, String>> answers) {
+        Map<Long, String> mcqAnswers = answers.getOrDefault("mcqAnswers", Map.of());
+        Map<Long, String> programmingAnswers = answers.getOrDefault("programmingAnswers", Map.of());
+        questionNavigationService.submitExam(studentExamId, mcqAnswers, programmingAnswers);
+        StudentExamEntity studentExam = questionNavigationService.getStudentExam(studentExamId);
         return ResponseEntity.ok(studentExam);
     }
 

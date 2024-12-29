@@ -34,9 +34,20 @@ public class QuestionController {
      * @param categoryName Name of the category
      * @return List of questions belonging to the given category
      */
-    @GetMapping("/{categoryName}")
+    @GetMapping("/category/{categoryName}")
     public ResponseEntity<List<Question>> getQuestionsByCategory(@PathVariable String categoryName) {
         List<Question> questions = questionService.getQuestionsByCategory(categoryName);
+        return ResponseEntity.ok(questions);
+    }
+    @GetMapping("/difficulty/{difficultyLevel}")
+    public ResponseEntity<List<Question>> getQuestionsByDifficulty(@PathVariable String difficultyLevel) {
+        List<Question> questions = questionService.getQuestionsByDifficulty(difficultyLevel);
+        return ResponseEntity.ok(questions);
+    }
+
+    @GetMapping("/type/{questionType}")
+    public ResponseEntity<List<Question>> getQuestionsByType(@PathVariable String questionType) {
+        List<Question> questions = questionService.getQuestionsByType(questionType);
         return ResponseEntity.ok(questions);
     }
 }

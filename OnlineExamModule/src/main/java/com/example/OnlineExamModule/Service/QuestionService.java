@@ -34,19 +34,24 @@ public class QuestionService {
         question.setQuestionText(questionDto.getQuestionText());
         question.setCategory(category);
         question.setCorrectOption(questionDto.getCorrectOption());
+        question.setReferenceAnswer(questionDto.getReferenceAnswer());
+        question.setDifficultyLevel(questionDto.getDifficultyLevel());
+        question.setQuestionType(questionDto.getQuestionType());
 
         // Save Question
         Question savedQuestion = questionRepository.save(question);
 
-        // Map and Save Options
-        int count = 1; // Initialize a counter outside the loop
-        for (String optionText : questionDto.getOptions()) {
-            Option option = new Option();
-            option.setOptionLabel("Option " + count++); // Dynamic label
-            option.setOptionText(optionText);
-            option.setQuestion(savedQuestion);
+        // Map and Save Options for MCQ questions
+        if ("MCQ".equalsIgnoreCase(questionDto.getQuestionType())) {
+            int count = 1; // Initialize a counter outside the loop
+            for (String optionText : questionDto.getOptions()) {
+                Option option = new Option();
+                option.setOptionLabel("Option " + count++); // Dynamic label
+                option.setOptionText(optionText);
+                option.setQuestion(savedQuestion);
 
-            optionRepository.save(option);
+                optionRepository.save(option);
+            }
         }
 
         return savedQuestion;
@@ -57,4 +62,14 @@ public class QuestionService {
                 .orElseThrow(() -> new RuntimeException("Category not found"));
         return questionRepository.findByCategory(category);
     }
+
+    public List<Question> getQuestionsByDifficulty(String difficultyLevel) {
+        return questionRepository.findByDifficultyLevel(difficultyLevel);
+    }
+
+    public List<Question> getQuestionsByType(String questionType) {
+        return questionRepository.findByQuestionType(questionType);
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package com.example.OnlineExamModule.Entity;
 
 import jakarta.persistence.*;
+import org.w3c.dom.Text;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -41,7 +42,15 @@ public class StudentExamEntity {
     @CollectionTable(name="student_exam_answers",joinColumns = @JoinColumn(name="student_exam_id"))
     @MapKeyColumn(name= "question_id")
     @Column(name="selected_option")
-    private Map<Long,String> answers= new HashMap<>();
+    private Map<Long,String> mcqAnswers= new HashMap<>();
+
+
+    @ElementCollection
+    @CollectionTable(name="student_exam_programming_answers",joinColumns =@JoinColumn(name="student_exam_id"))
+    @MapKeyColumn(name="question_id")
+    @Column(name="Programming_answer",columnDefinition = "TEXT")
+    private Map<Long,String> programmingAnswers=new HashMap<>();
+
 
 
     //Getters and Setters
@@ -101,12 +110,19 @@ public class StudentExamEntity {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
-    public Map<Long,String> getAnswers(){
-        return answers;
+    public Map<Long,String> getMcqAnswers(){
+        return mcqAnswers;
     }
 
-    public void setAnswers(Map<Long,String> answers){
-        this.answers=answers;
+    public void setMcqAnswers(Map<Long,String> mcqAnswers){
+        this.mcqAnswers=mcqAnswers;
 
+    }
+    public Map<Long,String> getProgrammingAnswers(){
+        return programmingAnswers;
+    }
+
+    public void setProgrammingAnswers(Map<Long,String> programmingAnswers){
+        this.programmingAnswers=programmingAnswers;
     }
 }
