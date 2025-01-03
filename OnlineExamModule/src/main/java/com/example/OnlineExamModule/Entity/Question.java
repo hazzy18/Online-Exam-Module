@@ -18,7 +18,7 @@ public class Question {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    @Column(name = "correct_option", nullable = false)
+    @Column(name = "correct_option")
     private String correctOption;
 
     @Column(name = "reference_answer")

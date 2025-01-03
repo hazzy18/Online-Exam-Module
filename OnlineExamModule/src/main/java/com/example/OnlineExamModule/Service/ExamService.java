@@ -49,6 +49,8 @@ public class ExamService {
     public List<Exam> getAllExams(){
         return examRepository.findAll();
     }
+
+
     public List<StudentExamEntity> getExamResults(Long examId){
         Exam exam=examRepository.findById(examId)
                 .orElseThrow(()->new RuntimeException("Exam Not Found"));

@@ -16,8 +16,8 @@ public class Option {
     @Column(name = "option_text", nullable = false)
     private String optionText;
 
-    @Column(name = "option_label", nullable = false)
-    private String optionLabel;
+//    @Column(name = "option_label", nullable = false)
+//    private String optionLabel;
 
     // Getters and Setters
     public Long getOptionId() {
@@ -44,11 +44,11 @@ public class Option {
         this.optionText = optionText;
     }
 
-    public String getOptionLabel() {
-        return optionLabel;
-    }
-
-    public void setOptionLabel(String optionLabel) {
-        this.optionLabel = optionLabel;
-    }
+//    public String getOptionLabel() {
+//        return optionLabel;
+//    }
+//
+//    public void setOptionLabel(String optionLabel) {
+//        this.optionLabel = optionLabel;
+//    }
 }

@@ -1,8 +1,12 @@
 package com.example.OnlineExamModule.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class QuestionDto {
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long questionId;
     private String questionText;
     private String categoryName;
     private String correctOption;
@@ -45,6 +49,13 @@ public class QuestionDto {
         this.options = options;
     }
 
+
+    public Long getQuestionId(){
+        return questionId;
+    }
+    public void setQuestionId(Long questionId){
+        this.questionId=questionId;
+    }
     public String getReferenceAnswer() {
         return referenceAnswer;
     }
