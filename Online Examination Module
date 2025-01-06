@@ -1,4 +1,3 @@
-Online Examination Module
 This project is an Online Examination System built using Spring Boot (backend), React.js (frontend), and MySQL (database). It provides functionality for two primary roles:
 1.	Admin: Responsible for managing student profiles, questions, and exams.
 2.	Student: Participates in exams by selecting and answering questions.
