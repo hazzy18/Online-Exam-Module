@@ -1,0 +1,41 @@
+App.jsx:
+<Route path="/" element={<MainPageComponent />} />
+            <Route path="/student-management" element={<MainPageStudentComponent />} />
+            <Route path="/create-student" element={<CreateStudentComponent />} />
+            <Route path="/get-all-students" element={<ListStudentComponent />} />
+            <Route path="/question-management" element={<MainPageQuestionComponent />} />
+            <Route path="/create-question" element={<CreateQuestionComponent />} />
+            <Route path="/view-questions" element={<ListQuestionComponent />} />
+            <Route path="/exam-management" element={<MainPageExamComponent />} />
+            <Route path="/create-exam" element={<CreateExamComponent />} />
+            <Route path="/get-all-exams" element={<ListExamComponent />} />
+            <Route path="/get-results" element={<ExamResultsComponent />} />   
+
+
+
+
+
+
+function App() {
+
+  return (
+    <Router>
+        <Routes>
+        <Route path="/" element={<MainPageComponent />} />
+            <Route path="/student-management" element={<MainPageStudentComponent />} />
+            <Route path="/create-student" element={<CreateStudentComponent />} />
+            <Route path="/get-all-students" element={<ListStudentComponent />} />
+            <Route path="/question-management" element={<MainPageQuestionComponent />} />
+            <Route path="/create-question" element={<CreateQuestionComponent />} />
+            <Route path="/view-questions" element={<ListQuestionComponent />} />
+            <Route path="/exam-management" element={<MainPageExamComponent />} />
+            <Route path="/create-exam" element={<CreateExamComponent />} />
+            <Route path="/get-all-exams" element={<ListExamComponent />} />
+            <Route path="/get-results" element={<ExamResultsComponent />} />   
+            <Route path="/student-exams" element={<MainPageStudentExamComponent />} />
+            <Route path="/start-exam/:examId" element={<StartExamComponent />} />
+            <Route path="/question/:studentExamId" element={<QuestionNavigationComponent />} />
+        </Routes>
+    </Router>
+  )
+}
