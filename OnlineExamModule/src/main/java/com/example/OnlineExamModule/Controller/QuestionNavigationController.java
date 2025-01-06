@@ -1,6 +1,7 @@
 package com.example.OnlineExamModule.Controller;
 
 import com.example.OnlineExamModule.DTO.AnswerDetailsDto;
+import com.example.OnlineExamModule.DTO.QuestionDto;
 import com.example.OnlineExamModule.Entity.ExamQuestion;
 import com.example.OnlineExamModule.Entity.Question;
 import com.example.OnlineExamModule.Entity.StudentExamEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+@CrossOrigin(origins = "http://localhost:3000")
 
 @RestController
 @RequestMapping("/api/examNavigation")
@@ -19,15 +21,15 @@ public class QuestionNavigationController {
     private QuestionNavigationService questionNavigationService;
 
     @GetMapping("/{examId}/questions")
-    public ResponseEntity<List<ExamQuestion>> getQuestionsForExam(@PathVariable Long examId){
-       List<ExamQuestion> questions= questionNavigationService.getQuestionsForExam(examId);
+    public ResponseEntity<List<QuestionDto>> getQuestionsForExam(@PathVariable Long examId){
+       List<QuestionDto> questions= questionNavigationService.getQuestionsForExam(examId);
        return ResponseEntity.ok(questions);
     }
 
     @GetMapping("questions/{questionId}")
-    public ResponseEntity<Question> getQuestionById(@PathVariable Long questionId){
+    public ResponseEntity<QuestionDto> getQuestionById(@PathVariable Long questionId){
         /// changes-----------
-        Question question=questionNavigationService.getQuestionById(questionId);
+        QuestionDto question=questionNavigationService.getQuestionById(questionId);
         return ResponseEntity.ok(question);
 
         }
@@ -66,5 +68,17 @@ public class QuestionNavigationController {
     public ResponseEntity<StudentExamEntity> startExam(@PathVariable Long studentId,@PathVariable Long examId){
         StudentExamEntity studentExam=questionNavigationService.startExam(studentId,examId);
         return ResponseEntity.ok(studentExam);
+    }
+
+    @GetMapping("/next/{studentExamId}/{currentQuestionId}")
+    public ResponseEntity<QuestionDto> getNextQuestion(@PathVariable Long studentExamId, @PathVariable Long currentQuestionId) {
+        QuestionDto nextQuestion = questionNavigationService.getNextQuestion(studentExamId, currentQuestionId);
+        return ResponseEntity.ok(nextQuestion);
+    }
+
+    @GetMapping("/prev/{studentExamId}/{currentQuestionId}")
+    public ResponseEntity<QuestionDto> getPreviousQuestion(@PathVariable Long studentExamId, @PathVariable Long currentQuestionId) {
+        QuestionDto prevQuestion = questionNavigationService.getPreviousQuestion(studentExamId, currentQuestionId);
+        return ResponseEntity.ok(prevQuestion);
     }
 }
